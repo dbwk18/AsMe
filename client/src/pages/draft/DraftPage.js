@@ -15,7 +15,6 @@ function DraftPage() {
     const [writingTool, setWritingTool] = useState(false);
 
     const onEditorStateChange = (editorState) => {
-        // editorState에 값 설정
         setEditorState(editorState);
     };
 
