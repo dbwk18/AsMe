@@ -1,0 +1,9 @@
+{
+    "development": {
+        "host": "localhost",
+        "user": "root",
+        "port": 3306,
+        "password": "980605",
+        "database": "AsMe"
+    }
+}
