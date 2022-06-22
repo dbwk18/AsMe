@@ -1,0 +1,36 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js add --save @ckeditor/ckeditor5-react @ckeditor/ckeditor5
+
+PATH: 
+  /Users/hongyoojin/.rvm/gems/ruby-2.6.8/bin:/Users/hongyoojin/.rvm/gems/ruby-2.6.8@global/bin:/Users/hongyoojin/.rvm/rubies/ruby-2.6.8/bin:/Users/hongyoojin/opt/anaconda3/bin:/Users/hongyoojin/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/hongyoojin/.rvm/gems/ruby-2.6.8/bin:/Users/hongyoojin/.rvm/gems/ruby-2.6.8@global/bin:/Users/hongyoojin/.rvm/rubies/ruby-2.6.8/bin:/Users/hongyoojin/.rbenv/shims:/Users/hongyoojin/.rbenv/bin:/Users/hongyoojin/.rvm/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  16.14.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@ckeditor%2fckeditor5: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:66988:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:140749:22)
+      at Request.emit (node:events:520:28)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141721:10)
+      at Request.emit (node:events:520:28)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141643:12)
+      at Object.onceWrapper (node:events:639:28)
+      at IncomingMessage.emit (node:events:532:35)
+      at endReadableNT (node:internal/streams/readable:1346:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
