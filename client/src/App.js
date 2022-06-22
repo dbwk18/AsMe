@@ -8,25 +8,27 @@ import NotFound from './pages/NotFound';
 import MainPage from './pages/main/MainPage';
 import LoginPage from './pages/login/LoginPage';
 import SignupPage from './pages/signup/SignupPage';
+import DraftPage from './pages/draft/DraftPage';
 
 
 function App() {
     return (
         <React.Fragment>
-            <ThemeProvider theme={theme}>
+            {/* <ThemeProvider theme={theme}> */}
                 <CssBaseline />
                 <Suspense fallback={(<div>Loading...</div>)}>
                     <Router>
                         <NavBar />
                         <Routes>
                             <Route path="/" element={<MainPage />} />
+                            <Route path="/draft" element={<DraftPage />} />
                             <Route path="/login" element={<LoginPage />} />
                             <Route path="/signup" element={<SignupPage />} />
                             <Route path="/*" element={<NotFound />} />
                         </Routes>
                     </Router>
                 </Suspense>
-            </ThemeProvider>
+            {/* </ThemeProvider> */}
         </React.Fragment>
     );
 }
