@@ -22,9 +22,9 @@ exports.deleteTrash = async (req, res) => {
         await trashService.deleteTrash(trash_id);
         let check = await trashService.selectTrash([trash_id]);
         if (check[0] == null) {
-            res.send('<script type="text/javascript">alert("삭제되었습니다.");</script>');
+            res.status(200).json({ message: "삭제되었습니다." });
         } else {
-            res.send('<script type="text/javascript">alert("삭제 실패.");</script>');
+            res.status(200).json({ message: "삭제를 실패하였습니다." });
         }
     } catch (error) {
         return res.status(500).json(error);
