@@ -4,6 +4,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
 import './DraftPage.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import axios from 'axios';
 
 function DraftPage() {
 
@@ -13,12 +14,31 @@ function DraftPage() {
     const [searchTool, setSearchTool] = useState(false);
     const [writingTool, setWritingTool] = useState(false);
 
+    const [textQuery, setTextQuery] = useState('flying dog')
+
     const onEditorStateChange = (editorState) => {
         setEditorState(editorState);
     };
 
     console.log(editorState)
    
+
+    function get_image(msg) {
+        console.log(msg)
+        const response =fetch(`http://0.0.0.0:8080/img/${msg}}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: {
+                text_qury: msg
+            }
+        }).then(res => {
+            console.log(res.data);
+        }).catch(error => {
+            console.log(error)
+        })
+    }
     
     return (
         <Stack height="100vh" alignItems="center" justifyContent="center" >
@@ -64,6 +84,7 @@ function DraftPage() {
                 ? (
                     <div className='popup-tool'>
                         <div className='close-btn' onClick={()=>{setSearchTool(false);}}>X</div>
+                        <button onClick={()=>{get_image('flying dog');}}>검색</button>
                     </div>
                 )
                 : <></>
