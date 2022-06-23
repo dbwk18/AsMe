@@ -101,7 +101,7 @@ function DraftPage() {
                                 <img width="70px" src={ProfileImg} />
                             </div>
                             <div className='popup-text'>
-                                000님의 휴지통 목록
+                                글쓴이님의 휴지통 목록
                             </div>
                         </div>
                         <div style={{position:"relative", top: "20px"}}>
@@ -112,9 +112,9 @@ function DraftPage() {
                                         <div className='idx'>01</div>
                                         <div className='date'>2022-04-21</div>
                                     </div>
-                                    <div className='title'>운동하기</div>
+                                    <div className='title'>우주</div>
                                     <div style={{display: "flex"}}>
-                                        <div className='tag'>운동</div>
+                                        <div className='tag'>마음</div>
                                     </div>
                                 </div>
                             </div>
@@ -126,10 +126,10 @@ function DraftPage() {
                                         <div className='idx'>02</div>
                                         <div className='date'>2022-04-21</div>
                                     </div>
-                                    <div className='title'>운동하기</div>
+                                    <div className='title'>팡파레</div>
                                     <div style={{display: "flex"}}>
-                                        <div className='tag'>김치찌개</div>
-                                        <div className='tag'>배고파요</div>
+                                        <div className='tag'>바람</div>
+                                        <div className='tag'>싱그러운 설렘</div>
                                     </div>
                                 </div>
                             </div>
@@ -141,9 +141,10 @@ function DraftPage() {
                                         <div className='idx'>01</div>
                                         <div className='date'>2022-04-21</div>
                                     </div>
-                                    <div className='title'>운동하기</div>
+                                    <div className='title'>우정</div>
                                     <div style={{display: "flex"}}>
-                                        <div className='tag'>운동</div>
+                                        <div className='tag'>친구</div>
+                                        <div className='tag'>역경</div>
                                     </div>
                                 </div>
                             </div>

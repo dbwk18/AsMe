@@ -112,7 +112,7 @@ function NavBar() {
                                                     <Typography>보관함 가기</Typography>
                                                 </Button>
                                                 <Button className={classes.menuButton} href="/wastebasket" variant="contained" onClick={toggleDrawer}>
-                                                    <Typography>쓰레기통 가기</Typography>
+                                                    <Typography>휴지통 가기</Typography>
                                                 </Button>
                                             </Stack>
                                         </React.Fragment>

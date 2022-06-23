@@ -3,7 +3,8 @@
         "host": "localhost",
         "user": "root",
         "port": 3306,
-        "password": "980605",
+        "password": "990311",
         "database": "AsMe"
     }
 }
+

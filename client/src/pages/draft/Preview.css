@@ -4,11 +4,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #FAFAFA;
-    width: 1400px;
-    height: 850px;
+    width: 1300px;
+    height: 800px;
     z-index: 100;
     border-radius: 10px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .preview-select {
@@ -19,7 +20,7 @@
     position: relative;
     margin-left: auto;
     top: -120px;
-    left: 1330px;
+    left: 1230px;
 }
 
 .preview-layout {
@@ -33,8 +34,8 @@
 
 .preview-layout > div{
     display: flex;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border: 3px solid #000000;
     margin: 0 100px;
     justify-content: center;
