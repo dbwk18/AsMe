@@ -6,6 +6,9 @@ import Logo from '../../assets/images/Logo.png';
 import PencilCase from '../../assets/images/PencilCase.png';
 import PencilCaseTop from '../../assets/images/PencilCaseTop.png';
 import Pencil from '../../assets/images/Pencil.png';
+import Drawing from '../../assets/images/Drawing.png';
+import PaperRoll from '../../assets/images/PaperRoll.png';
+import Floor from '../../assets/images/Floor.png';
 
 
 function MainPage() {
@@ -53,43 +56,38 @@ function MainPage() {
                                 </Stack>
                             </Box>
                         </Box>
-                        
                         <img src={PencilCase} style={{ zIndex: 99 }} />
                     </Stack>
                 </Stack>
             </Box>
             <Box sx={{ pt: "7.5rem" }} display="flex" justifyContent="center">
-                <Stack alignItems="center" width="20rem">
-                    <Box backgroundColor="primary.main" width="13rem">
-                        <Typography textAlign="center">버린 글감통</Typography>
-                    </Box>
-                    <Box sx={{ my: "1rem" }} backgroundColor="primary.main" width="20rem">
-                        <Typography textAlign="center">설명 간단하게</Typography>
-                    </Box>
+                <Stack alignItems="center">
+                    <Typography textAlign="center" gutterBottom fontSize="1.5rem" fontWeight="500">영감을 주는 케이스</Typography>
+                    <Typography textAlign="center">영감을 주는........하 뭐라해야되냐</Typography>
                 </Stack>
             </Box>
             <Box sx={{ py: "3rem" }} display="flex" justifyContent="center" alignItems="center">
-                <Box height="27rem" width="2rem" backgroundColor="secondary.main">
-                    <Typography textAlign="center" sx={{ transform: "rotate(90deg)", pl: "1rem" }}>image</Typography>
-                </Box>
+                <img src={Drawing} />
             </Box>
             <Box display="flex" justifyContent="center">
                 <Stack alignItems="center" width="20rem" spacing="0.5rem">
-                    <Box sx={{ mb: "1.5rem" }}>이미지</Box>
-                    <Typography textAlign="center">버린 글감통</Typography>
-                    <Typography textAlign="center">설명 간단하게</Typography>
+                    <Box sx={{ mb: "2rem" }}>
+                        <img src={PaperRoll} width="70px" />
+                    </Box>
+                    <Typography textAlign="center" gutterBottom fontSize="1.5rem" fontWeight="500">내가 버린 글감들</Typography>
+                    <Typography textAlign="center">버린 글도 다시보자... 넌 멋쟁이거든...</Typography>
                 </Stack>
             </Box>
             <Box sx={{ overflowX: "hidden" }}>
-                <Stack width="110%" pt="7.5rem" direction="row" justifyContent="space-between" alignItems="flex-end" sx={{ overflowX: "hidden" }}>
-                    <RecyleBin color={"primary.light"} width={"230px"} height={"235px"} title={articles[0]?.title} number={1} creationTime={articles[0]?.creation_time} />
-                    <RecyleBin color={"primary.dark"} width={"220px"} height={"334px"} title={articles[1]?.title} number={2} creationTime={articles[1]?.creation_time} />
-                    <RecyleBin color={"primary.dark"} width={"255px"} height={"274px"} title={articles[2]?.title} number={3} creationTime={articles[2]?.creation_time} />
-                    <RecyleBin color={"primary.light"} width={"220px"} height={"298px"} title={articles[3]?.title} number={4} creationTime={articles[3]?.creation_time} />
-                    <RecyleBin color={"primary.light"} width={"220px"} height={"334px"} title={articles[4]?.title} number={5} creationTime={articles[4]?.creation_time} />
+                <Stack width="104%" pt="7.5rem" direction="row" justifyContent="space-between" alignItems="flex-end" sx={{ overflowX: "hidden" }}>
+                    <RecyleBin imageNum={0} width={"230px"} height={"235px"} title={articles[0]?.title} number={1} creationTime={articles[0]?.creation_time}></RecyleBin>
+                    <RecyleBin imageNum={3} width={"220px"} height={"334px"} title={articles[1]?.title} number={2} creationTime={articles[1]?.creation_time} />
+                    <RecyleBin imageNum={4} width={"255px"} height={"274px"} title={articles[2]?.title} number={3} creationTime={articles[2]?.creation_time} />
+                    <RecyleBin imageNum={1} width={"220px"} height={"298px"} title={articles[3]?.title} number={4} creationTime={articles[3]?.creation_time} />
+                    <RecyleBin imageNum={2} width={"220px"} height={"334px"} title={articles[4]?.title} number={5} creationTime={articles[4]?.creation_time} />
                 </Stack>
             </Box>
-            <Box width="100%" height="10rem" backgroundColor="secondary.main">image</Box>
+            <img src={Floor} width="100%" style={{ marginTop: "-0.5rem"}} />
         </Box>
     )
 }
