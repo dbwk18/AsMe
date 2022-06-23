@@ -19,8 +19,9 @@
     "draft-js": "^0.11.7",
     "express": "^4.18.1",
     "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.18",
     "react-draft-wysiwyg": "^1.14.7",
-    "yarn": "^1.22.19",
-    "nodemon": "^2.0.18"
+    "yarn": "^1.22.19"
   }
 }

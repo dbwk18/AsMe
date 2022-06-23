@@ -5,21 +5,21 @@
     background-color: #ADADAD;
 }
 .editor {
-    width: 1500px;
+    width: 1400px;
     height: 700px !important;
     border: 1px solid #f1f1f1 !important;
     padding: 5px !important;
     border-radius: 2px !important;
     background-color: #FFFFFF;
     padding: 0 50px !important;
-    font-size: 50px;
+    font-size: 40px;
   }
 
 .navigate-button {
     display: flex;
     position: relative;
     left: 150px;
-    bottom: 140px;
+    bottom: 100px;
     width: 300px;
     height: 100px;
     line-height: 100px;
@@ -27,9 +27,9 @@
 }
 
 .draftBtn {
-    width: 80px;
-    height: 80px;
-    margin: 10px;
+    width: 60px;
+    height: 60px;
+    margin: 5px;
     font-family: regular;
     font-size: 17px;
 }
@@ -53,8 +53,8 @@
 .toast-message {
     display: flex;
     position: absolute;
-    top: 22%;
-    right: 12.5%;
+    top: 15%;
+    right: 10.5%;
     width: 400px;
     height: 55px;
     padding: 0 0 0 20px;
@@ -70,12 +70,12 @@
 
 .popup-tool {
     position: absolute;
-    top: 730px;
+    top: 560px;
     left: 85%;
     transform: translate(-50%, -50%);
     background-color: #0D1F59;
-    width: 650px;
-    height: 940px;
+    width: 550px;
+    height: 800px;
     z-index: 100;
     overflow-y: auto;
 }
@@ -110,18 +110,18 @@
 }
 .popup-content .title {
     color: #FFFFFF;
-    font-size: 26px;
+    font-size: 24px;
 }
 .popup-content .tag {
     width: auto;
-    padding: 0 20px;
+    padding: 0 15px;
     color: #FFFFFF;
-    font-size: 20px;
+    font-size: 17px;
     height: 50px;
     margin: 15px 15px 0 0;
     line-height: 50px;
     border: 1px solid #FFFFFF;
-    border-radius: 28px;
+    border-radius: 22px;
     text-align: center;
 }
 

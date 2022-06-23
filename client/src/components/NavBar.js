@@ -121,8 +121,10 @@ function NavBar() {
                                                 <Button sx={{ borderRadius: 0, color: "#C5C5C5", border: "1px solid #C5C5C5" }} className={classes.menuButton} href="/archive" variant="outlined" onClick={toggleDrawer}>
                                                     <Typography fontWeight="700" fontFamily="inter" sx={{ color: "secondary.light" }}>보관함 가기</Typography>
                                                 </Button>
+
                                                 <Button sx={{ borderRadius: 0 }} className={classes.menuButton} href="/wastebasket" variant="contained" onClick={toggleDrawer}>
                                                     <Typography fontWeight="700" fontFamily="inter" sx={{ color: "secondary.light" }}>휴지통 가기</Typography>
+
                                                 </Button>
                                             </Stack>
                                         </React.Fragment>
