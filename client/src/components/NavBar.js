@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 function NavBar() {
     const user = useSelector(state => state[0]?.user);
     const classes= useStyles();
-    const [userId, setUserId] = useState(undefined);    // TEST: undefined / 1
+    const [userId, setUserId] = useState(1);    // TEST: undefined / 1
     const [openDrawer, setOpenDrawer] = useState(false);
     const [imgSrc, setImgSrc] = useState("https://as2.ftcdn.net/v2/jpg/02/79/66/93/1000_F_279669366_Lk12QalYQKMczLEa4ySjhaLtx1M2u7e6.jpg")
     const [openLoginForm, setOpenLoginForm] = useState(false);
