@@ -73,6 +73,7 @@ function WasteBasketPage() {
 
     return (
         <Box height="100%" sx={{ pt: "6rem", px: "10rem" }}>
+            <Typography sx={{ position: "fixed", left: "-3rem", top: "32rem", transform: "rotate(-90deg)" }} fontSize="12px" color="#ADADAD">Writing Assistant, 'AsMe'</Typography>
             <BorderBox>
                 {topicId ? (
                     <Box width="100%" height="100%" backgroundColor="#fff">
@@ -126,8 +127,8 @@ function WasteBasketPage() {
                             </Stack>
                         </TransparentLink>
                         <Stack sx={{ position: "fixed", bottom: "3rem", right: "3.75rem" }} spacing="0.5rem">
-                            <Typography fontSize="44px" textAlign="right">다시 꺼내 보세요.</Typography>
-                            <Typography fontSize="24px" textAlign="right">그게 겁나 천만관객 영화 대본이 될지도..?</Typography>
+                            <Typography fontSize="44px" textAlign="right" fontWeight="700">다시 꺼내 보세요.</Typography>
+                            <Typography fontSize="24px" textAlign="right">마침표를 찍을 수 있게 도와줄게요!</Typography>
                         </Stack>
                     </React.Fragment>
                 )}
