@@ -40,8 +40,26 @@ exports.insertTrash = async (req) => {
 }
 
 
+exports.getTrashes = async (req) => {
+    try {
+        let trashes = await pool.query('select trash_id, title, content from trash where user_id = ?', req);
+        return trashes[0];
+    } catch (error) {
+        return Error(error);
+    }
+}
 
-
+exports.clustering = async (req) => {
+    let cluster_id = req.cluster_id;
+    let keyword = req.keyword;
+    let trash_id = req.document_id;
+    try {
+        await pool.query('update trash set cluster_id=? and keyword=? where trash_id=?', [cluster_id, keyword, trash_id]);
+        return;
+    } catch (error) {
+        return Error(error);
+    }
+}
 
 // exports.updatePost = async (req, res) => {
 //     try {
