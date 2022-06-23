@@ -1,5 +1,14 @@
 var pool = require('../../middleware/database');
 
+exports.selectAllPost = async (user_id) => {
+    try {
+        let posts = await pool.query('select post_id, title, content, creation_time, layout_type from posts where user_id = ?', user_id);
+        console.log(posts[0]);
+        return posts[0];
+    } catch (error) {
+        return Error(error);
+    }
+}
 
 exports.selectPost = async (req) => {
     try {
@@ -13,7 +22,7 @@ exports.selectPost = async (req) => {
 exports.insertPost = async (req) => {
     try {
         console.log(req);
-        let post = await pool.query('insert into posts (title, content, creation_time, image, layout_type, user_id) values (?, ?, NOW(), ?, ?, ?)', req);
+        let post = await pool.query('insert into posts (title, content, creation_time, layout_type, user_id) values (?, ?, NOW(), ?, ?)', req);
         return post[0];
     } catch (error) {
         return Error(error);
@@ -40,9 +49,9 @@ exports.insertTrash = async (req) => {
 }
 
 
-exports.getTrashes = async (req) => {
+exports.getArticles = async (req) => {
     try {
-        let trashes = await pool.query('select trash_id, title, content from trash where user_id = ?', req);
+        let trashes = await pool.query('select trash_id, content from trash where user_id = ?', req);
         return trashes[0];
     } catch (error) {
         return Error(error);

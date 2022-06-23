@@ -2,18 +2,21 @@ import {React, useState} from 'react';
 import { Grid, Box, Typography, Stack, Divider, List, ListItem, ListItemText, ListSubheader, Container } from '@mui/material';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
+import Preview from './Preview';
+import TrashIcon from '../../assets/images/trashcan.png'
+import TrashIconOn from '../../assets/images/trashcanOn.png'
+import CloseBtn from '../../assets/images/closeBtn.png'
+import ProfileImg from '../../assets/images/profileImg.png'
+import defaultImg from '../../assets/images/WhitePaper2.png'
+
 import './DraftPage.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import axios from 'axios';
 
 function DraftPage() {
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
-    const [previewTool, setPreviewTool] = useState(false);
-    const [searchTool, setSearchTool] = useState(false);
-    const [writingTool, setWritingTool] = useState(false);
-
+    const [toolBtn, setToolBtn] = useState(null);
     const [textQuery, setTextQuery] = useState('flying dog')
 
     const onEditorStateChange = (editorState) => {
@@ -44,9 +47,9 @@ function DraftPage() {
         <Stack height="100vh" alignItems="center" justifyContent="center" >
             <div className="draft-wrapper" position="absolute">
                 <div className="navigate-button">
-                    <button className="draftBtn"onClick={()=>{setPreviewTool(true);}}>미리보기</button>
-                    <button className="draftBtn" onClick={()=>{setWritingTool(true);}}>글감추천</button>
-                    <button className="draftBtn" onClick={()=>{setSearchTool(true);}}>검색창</button>
+                    <button className={`draftBtn ${toolBtn == "preview" ? "previewOn" : ""}`} onClick={()=>{setToolBtn("preview");}}>미리<br/>보기</button>
+                    <button className={`draftBtn ${toolBtn == "writing" ? "writeOn" : ""}`} onClick={()=>{setToolBtn("writing");}}>글감<br/>보기</button>
+                    <button className={`draftBtn ${toolBtn == "trash" ? "trashOn" : ""}`} onClick={()=>{setToolBtn("trash");}}><img width="25px" src={toolBtn == 'trash' ? TrashIconOn : TrashIcon}></img></button>
                 </div>
                 <Editor
                     // class for editor & toolbar
@@ -71,33 +74,114 @@ function DraftPage() {
                 />
             </div>
             {
-                previewTool 
+                toolBtn == "preview" 
                 ? (
-                    <div className='preview-tool'>
-                        <div className='close-btn' onClick={()=>{setPreviewTool(false);}}>X</div>
+                    <>
+                        <div className="black_bg"></div>
+                        <Preview setToolBtn={setToolBtn} />
+                    </>
+                    
+                )
+                : <></>
+            }
+            {
+                toolBtn == "writing"  
+                ? (
+                    <div className='popup-tool'>
+                        <div className='popup-header'>
+                            <div>
+                                <input className='popup-input' type="text" placeholder="글감을 검색하세요"/>
+                            </div>
+                            <div className='close-btn' onClick={()=>{setToolBtn(null);}}>
+                                <img width="30px" src={CloseBtn} /> 
+                            </div>
+                        </div>
+                        <div className='popup-header'>
+                            <div>
+                                <img width="70px" src={ProfileImg} />
+                            </div>
+                            <div className='popup-text'>
+                                000님의 휴지통 목록
+                            </div>
+                        </div>
+                        <div style={{position:"relative", top: "20px"}}>
+                            <div className='popup-content'>
+                                <img width="150px" src={defaultImg} />
+                                <div style={{display: "flex", flexDirection: "column", padding: "0px 45px"}}>
+                                    <div className='head'>
+                                        <div className='idx'>01</div>
+                                        <div className='date'>2022-04-21</div>
+                                    </div>
+                                    <div className='title'>운동하기</div>
+                                    <div style={{display: "flex"}}>
+                                        <div className='tag'>운동</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className='popup-content'>
+                                <img width="150px" src={defaultImg} />
+                                <div style={{display: "flex", flexDirection: "column", padding: "0px 45px"}}>
+                                    <div className='head'>
+                                        <div className='idx'>02</div>
+                                        <div className='date'>2022-04-21</div>
+                                    </div>
+                                    <div className='title'>운동하기</div>
+                                    <div style={{display: "flex"}}>
+                                        <div className='tag'>김치찌개</div>
+                                        <div className='tag'>배고파요</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className='popup-content'>
+                                <img width="150px" src={defaultImg} />
+                                <div style={{display: "flex", flexDirection: "column", padding: "0px 45px"}}>
+                                    <div className='head'>
+                                        <div className='idx'>01</div>
+                                        <div className='date'>2022-04-21</div>
+                                    </div>
+                                    <div className='title'>운동하기</div>
+                                    <div style={{display: "flex"}}>
+                                        <div className='tag'>운동</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className='popup-content'>
+                                <img width="150px" src={defaultImg} />
+                                <div style={{display: "flex", flexDirection: "column", padding: "0px 45px"}}>
+                                    <div className='head'>
+                                        <div className='idx'>01</div>
+                                        <div className='date'>2022-04-21</div>
+                                    </div>
+                                    <div className='title'>운동하기</div>
+                                    <div style={{display: "flex"}}>
+                                        <div className='tag'>운동</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
                     </div>
                 )
                 : <></>
             }
             {
-                searchTool 
+                toolBtn == "trash" 
                 ? (
-                    <div className='popup-tool'>
-                        <div className='close-btn' onClick={()=>{setSearchTool(false);}}>X</div>
-                        <button onClick={()=>{get_image('flying dog');}}>검색</button>
+                    <div className='toast-message'>
+                        휴지통으로 이동하였습니다.
+                        <div style={{marginLeft: "auto", marginRight: "20px"}}>
+                            <img width="20px" src={CloseBtn} onClick={()=>{setToolBtn(null);}} />
+                        </div>
                     </div>
                 )
                 : <></>
             }
-            {
-                writingTool 
-                ? (
-                    <div className='popup-tool'>
-                        <div className='close-btn' onClick={()=>{setWritingTool(false);}}>X</div>
-                    </div>
-                )
-                : <></>
-            }
+            
         </Stack>
     )
 }
