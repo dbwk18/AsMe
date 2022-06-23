@@ -7,7 +7,6 @@ import requests
 
 # # 플라스크 웹 서버 객체 생성
 app = Flask(__name__) 
-font_path = 'NanumGothic.ttf'
 
 
 @app.route("/")
@@ -18,15 +17,13 @@ def main():
 @app.route('/img/<textquery>', methods=['GET', 'POST'])
 def getImage(textquery):
     print(textquery)
-    r = requests.post(
-        "https://api.deepai.org/api/text2img",
-        data={
-            'text': textquery,
-        },
-        headers={'api-key': '6d5202bd-5ed3-4db2-bb6f-1caead4fe46c'}
-    )
 
-    return r.json()
+@app.route('/dalle', methods=['GET', 'POST'])
+def dalle_2():
+    lists = request.args['file_name']
+    lists = lists.split(',')
+    data = []
+
 
 
 CORS(app, resources={r'*': {'origins': 'http://localhost:3000'}}) 
