@@ -14,7 +14,7 @@ import DraftPage from './pages/draft/DraftPage';
 function App() {
     return (
         <React.Fragment>
-            {/* <ThemeProvider theme={theme}> */}
+            <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <Suspense fallback={(<div>Loading...</div>)}>
                     <Router>
@@ -28,7 +28,7 @@ function App() {
                         </Routes>
                     </Router>
                 </Suspense>
-            {/* </ThemeProvider> */}
+            </ThemeProvider>
         </React.Fragment>
     );
 }
