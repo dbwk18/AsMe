@@ -1,5 +1,6 @@
 const axios = require('axios');
 const postService = require('../services/postService');
+const trashService = require('../services/trashService');
 
 exports.selectAllPost = async (req, res) => {
     let { user_id } = req.body;
@@ -59,10 +60,19 @@ exports.deletePost = async (req, res) => {
         const response = await axios.get("http://localhost:5000/api/topic");
 
         console.log("get result : " + response);
+        let user = await trashService.getTrash(user_id);
+        // let response = {
+        //     "cluster_article": [(0, [3, 4, 5]), (1, [1, 2]), (2, [6, 7]), (3, [8]), (4, [9])],
+        //     "cluster_topic": { 0: '경기', 1: '학습', 2: '사과', 3: '놀이공원', 4: '기타' }
+        // }
 
-        let clusters = response.documents;
-        for (let i = 0; i < documents.length; i++) {
-            await postService.clustering(clusters[i]);
+        let article = response.cluster_article;
+        let topic = Object.values(response.cluster_topic);
+
+        for (let i = 0; i < article.length; i++) {
+            for (let j = 0; j < article[i].length; j++) {
+                await trashService.insertArticle([article[i][j], topic[i], user[i].trash_id]);
+            }
         }
         await postService.deletePost(post_id);
         res.status(200).json({ message: "휴지통으로 이동되었습니다." });

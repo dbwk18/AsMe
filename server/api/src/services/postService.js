@@ -51,7 +51,7 @@ exports.insertTrash = async (req) => {
 
 exports.getArticles = async (req) => {
     try {
-        let trashes = await pool.query('select trash_id, content from trash where user_id = ?', req);
+        let trashes = await pool.query('select cluster_id, content from trash where user_id = ?', req);
         return trashes[0];
     } catch (error) {
         return Error(error);
@@ -59,11 +59,8 @@ exports.getArticles = async (req) => {
 }
 
 exports.clustering = async (req) => {
-    let cluster_id = req.cluster_id;
-    let keyword = req.keyword;
-    let trash_id = req.document_id;
     try {
-        await pool.query('update trash set cluster_id=? and keyword=? where trash_id=?', [cluster_id, keyword, trash_id]);
+        await pool.query('update trash set cluster_id=? and keyword = ? where trash_id=?', req);
         return;
     } catch (error) {
         return Error(error);
