@@ -43,10 +43,29 @@
     color: #FFFFFF;
 }
 
-.draftBtn.searchOn {
+.draftBtn.trashOn {
     background-color: #0D1F59;
     color: #FFFFFF;
 }
+
+
+.toast-message {
+    display: flex;
+    position: absolute;
+    top: 22%;
+    right: 12.5%;
+    width: 400px;
+    height: 55px;
+    padding: 0 0 0 20px;
+    line-height: 55px;
+    font-size: 26px;
+    font-family: regular;
+    color: #FFFFFF;
+    background-color: #0D1F59;
+    border-radius: 6px;
+    z-index: 100;
+}
+
 
 .popup-tool {
     position: absolute;
@@ -151,3 +170,4 @@
     width: 100px;
     top: 20px;
 }
+

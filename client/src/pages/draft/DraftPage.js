@@ -3,6 +3,7 @@ import { Grid, Box, Typography, Stack, Divider, List, ListItem, ListItemText, Li
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
 import TrashIcon from '../../assets/images/trashcan.png'
+import TrashIconOn from '../../assets/images/trashcanOn.png'
 import CloseBtn from '../../assets/images/closeBtn.png'
 import ProfileImg from '../../assets/images/profileImg.png'
 import defaultImg from '../../assets/images/WhitePaper2.png'
@@ -48,7 +49,7 @@ function DraftPage() {
                 <div className="navigate-button">
                     <button className={`draftBtn ${toolBtn == "preview" ? "previewOn" : ""}`} onClick={()=>{setToolBtn("preview");}}>미리<br/>보기</button>
                     <button className={`draftBtn ${toolBtn == "writing" ? "writeOn" : ""}`} onClick={()=>{setToolBtn("writing");}}>글감<br/>보기</button>
-                    <button className={`draftBtn ${toolBtn == "trash" ? "trashOn" : ""}`} onClick={()=>{setToolBtn("trash");}}><img width="25px" src={TrashIcon}></img></button>
+                    <button className={`draftBtn ${toolBtn == "trash" ? "trashOn" : ""}`} onClick={()=>{setToolBtn("trash");}}><img width="25px" src={toolBtn == 'trash' ? TrashIconOn : TrashIcon}></img></button>
                 </div>
                 <Editor
                     // class for editor & toolbar
@@ -170,7 +171,10 @@ function DraftPage() {
                 toolBtn == "trash" 
                 ? (
                     <div className='toast-message'>
-                      
+                        휴지통으로 이동하였습니다.
+                        <div style={{marginLeft: "auto", marginRight: "20px"}}>
+                            <img width="20px" src={CloseBtn} onClick={()=>{setToolBtn(null);}} />
+                        </div>
                     </div>
                 )
                 : <></>
