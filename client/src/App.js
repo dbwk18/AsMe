@@ -9,7 +9,8 @@ import MainPage from './pages/main/MainPage';
 import LoginPage from './pages/login/LoginPage';
 import SignupPage from './pages/signup/SignupPage';
 import DraftPage from './pages/draft/DraftPage';
-import ArchivePage from './pages/archive/ArchivePage'
+import ArchivePage from './pages/archive/ArchivePage';
+import WasteBasketPage from './pages/wastebasket/WasteBasketPage';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                             <Route path="/" element={<MainPage />} />
                             <Route path="/draft" element={<DraftPage />} />
                             <Route path="/archive" element={<ArchivePage />} />
+                            <Route path="/wastebasket" element={<WasteBasketPage />} />
                             <Route path="/login" element={<LoginPage />} />
                             <Route path="/signup" element={<SignupPage />} />
                             <Route path="/*" element={<NotFound />} />
