@@ -48,42 +48,30 @@ exports.deletePost = async (req, res) => {
 
         let check = await postService.insertTrash([post_id, title, content, creation_time, image, layout_type, user_id]);
 
-        //clusturing
+        //trash list post
         let trashes = await postService.getTrashes(user_id);
 
         const postTrashes = await axios.post("http://localhost:8080/api/topic", {
             data: trashes
         });
 
-        console.log(postTrashes.data);
+        console.log("post result : " + postTrashes.data);
+
+        //cluster list get
         const response = await axios.get("http://localhost:8080/api/topic");
 
-        console.log(response.data);
-        let = response.data;
-        for (let i = 0; i < documents.length; i++) {
-            await postService.clustering(documents[i]);
-        }
+        console.log("get result : " + response);
 
-        console.log(check);
-        if (!check) {
-            res.status(200).json({ message: "삭제에 실패하였습니다." });
-        } else {
-            await postService.deletePost(post_id);
-            res.status(200).json({ message: "휴지통으로 이동되었습니다." });
-            // return res.status(200).json({
-            //     layout_type: check[0].layout_type,
-            //     title: check[0].title,
-            //     content: check[0].content,
-            //     creation_time: check[0].creation_time,
-            //     image: check[0].image
-            // });
+        let clusters = response.documents;
+        for (let i = 0; i < documents.length; i++) {
+            await postService.clustering(clusters[i]);
         }
+        await postService.deletePost(post_id);
+        res.status(200).json({ message: "휴지통으로 이동되었습니다." });
     } catch (error) {
         return res.status(500).json(error);
     }
 }
-
-
 
 
 // exports.updatePost = async (req, res) => {
