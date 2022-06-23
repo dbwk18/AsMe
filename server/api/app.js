@@ -9,7 +9,6 @@ var signRouter = require('../api/src/routes/signRouter');
 var boardRouter = require('../api/src/routes/boardRouter');
 var postRouter = require('../api/src/routes/postRouter');
 var trashRouter = require('../api/src/routes/trashRouter');
-var trashBoardRouter = require('../api/src/routes/trashBoardRouter');
 
 
 var app = express();
@@ -32,7 +31,6 @@ app.use('/api', signRouter);
 app.use('/api', boardRouter);
 app.use('/api', postRouter);
 app.use('/api', trashRouter);
-app.use('/api', trashBoardRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -17,3 +17,12 @@ exports.deleteTrash = async (req) => {
         return Error(error);
     }
 }
+
+exports.selectCluster = async (req) => {
+    try {
+        let trash = await pool.query('select cluster_id, keyword from trash where user_id = ?', req);
+        return trash[0];
+    } catch (error) {
+        return Error(error);
+    }
+}
