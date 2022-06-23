@@ -15,11 +15,11 @@ function MainPage() {
     const classes = useStyles();
     const [openCase, setOpenCase] = useState(false);
     const [articles, setArticles] = useState([
-        {"post_id": 1, "title": "제목1", "creation_time": "2022-06-22"},
-        {"post_id": 2, "title": "제목2", "creation_time": "2022-06-22"},
-        {"post_id": 3, "title": "제목3", "creation_time": "2022-06-23"},
-        {"post_id": 4, "title": "제목4", "creation_time": "2022-06-23"},
-        {"post_id": 5, "title": "제목5", "creation_time": "2022-06-23"},
+        {"post_id": 1, "title": "로꼬", "creation_time": "2022-06-23"},
+        {"post_id": 2, "title": "무도", "creation_time": "2022-06-21"},
+        {"post_id": 3, "title": "복수", "creation_time": "2022-06-01"},
+        {"post_id": 4, "title": "해커톤", "creation_time": "2022-05-11"},
+        {"post_id": 5, "title": "제목5", "creation_time": "2022-04-20"},
     ]);
 
     return (
@@ -62,20 +62,20 @@ function MainPage() {
             </Box>
             <Box sx={{ pt: "7.5rem" }} display="flex" justifyContent="center">
                 <Stack alignItems="center">
-                    <Typography textAlign="center" gutterBottom fontSize="1.5rem" fontWeight="500">영감을 주는 케이스</Typography>
-                    <Typography textAlign="center">영감을 주는........하 뭐라해야되냐</Typography>
+                    <Typography textAlign="center" gutterBottom fontSize="1.5rem" fontWeight="500" letterSpacing={2}>" 뭐라고 쓰지 "</Typography>
+                    <Typography textAlign="center">잘 떠오르지 않아 글을 썼다 지웠다 여러 번 반복하신 적 있나요?</Typography>
                 </Stack>
             </Box>
             <Box sx={{ py: "3rem" }} display="flex" justifyContent="center" alignItems="center">
                 <img src={Drawing} />
             </Box>
             <Box display="flex" justifyContent="center">
-                <Stack alignItems="center" width="20rem" spacing="0.5rem">
+                <Stack alignItems="center" spacing="0.5rem">
                     <Box sx={{ mb: "2rem" }}>
                         <img src={PaperRoll} width="70px" />
                     </Box>
-                    <Typography textAlign="center" gutterBottom fontSize="1.5rem" fontWeight="500">내가 버린 글감들</Typography>
-                    <Typography textAlign="center">버린 글도 다시보자... 넌 멋쟁이거든...</Typography>
+                    <Typography textAlign="center" gutterBottom fontSize="1.5rem" fontWeight="500" letterSpacing={2}>내가 버린 글감들</Typography>
+                    <Typography textAlign="center">버렸던 글을 다시보며 나만의 글감을 찾아보세요.</Typography>
                 </Stack>
             </Box>
             <Box sx={{ overflowX: "hidden" }}>

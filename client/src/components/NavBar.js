@@ -1,24 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { styled, makeStyles } from '@mui/styles';
 import { Box, Link, Typography, Button, Stack, Drawer } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CircleLogo from '../assets/images/CircleLogo.png';
 import Logo from '../assets/images/Logo.png';
+import GuestProfile from '../assets/images/GuestProfile.png';
+import UserProfile from '../assets/images/UserProfile.png';
+import CopyWrite from '../assets/images/CopyWrite.png';
 
 
 function NavBar() {
-    const user = useSelector(state => state[0]?.user);
     const classes= useStyles();
-    const [userId, setUserId] = useState(1);    // TEST: undefined / 1
+    const [userId, setUserId] = useState(undefined);
+    const [userName, setUserName] = useState(undefined);
     const [openDrawer, setOpenDrawer] = useState(false);
-    const [imgSrc, setImgSrc] = useState("https://as2.ftcdn.net/v2/jpg/02/79/66/93/1000_F_279669366_Lk12QalYQKMczLEa4ySjhaLtx1M2u7e6.jpg")
+    const [imgSrc, setImgSrc] = useState(GuestProfile)
     const [openLoginForm, setOpenLoginForm] = useState(false);
     const [openSignupForm, setOpenSignupForm] = useState(false);
     const [isLogoCircle, setIsLogoCircle] = useState(true);
 
     useEffect(() => {
-        if (window.location.pathname === "/") {
+        setUserId(window.localStorage.getItem("user_id"));
+        setUserName(window.localStorage.getItem("user_name"));
+        // signOut();
+
+        if (window.location.pathname === "/" || window.location.pathname === "/login" || window.location.pathname === "/signup") {
             setIsLogoCircle(true);
         }
         else {
@@ -28,8 +34,13 @@ function NavBar() {
         window.addEventListener('scroll', updateScroll);
     }, [window.location.pathname])
 
+    const signOut = () => {
+        window.localStorage.removeItem("user_id");
+        window.localStorage.removeItem("user_name")
+    }
+
     const updateScroll = () => {
-        if (window.location.pathname === "/") {
+        if (window.location.pathname === "/" || window.location.pathname === "/login" || window.location.pathname === "/signup") {
             setIsLogoCircle(true);
         }
         else {
@@ -37,10 +48,9 @@ function NavBar() {
         }
     }
 
-
     useEffect(() => {
         if (userId) {
-            // setImgSrc();
+            setImgSrc(UserProfile);
         }
     }, [userId]);
 
@@ -90,39 +100,45 @@ function NavBar() {
                             onKeyDown={() => setOpenDrawer(true)}
                             onClick={() => setOpenDrawer(true)}
                         >
-                            <Box 
-                                sx={{ pt: "10rem" }}
+                            <Box
+                                sx={{ pt: "8rem" }}
                                 role="presentation"
                                 onKeyDown={() => setOpenDrawer(true)}
                                 onClick={() => setOpenDrawer(true)}
                             >
                                 <Stack justifyContent="center" alignItems="center">
+                                    <Box width="2.5rem" height="0.25rem" backgroundColor="#fff" sx={{ mb: "1.5rem" }} />
                                     <img src={imgSrc} width="164px" height="164px" />
                                     {userId ? (
                                         <React.Fragment>
                                             <Stack spacing="1rem" mt="2rem" alignItems="center">
-                                                <Typography color="primary.light">이름</Typography>
-                                                <Typography color="primary.light">아이디</Typography>
+                                                <Typography fontSize="20px" fontWeight="700" fontFamily="inter" sx={{ color: "secondary.light" }}>{userName}</Typography>
                                             </Stack>
                                             <Stack spacing={"2.5rem"} mt="6rem">
-                                                <Button className={classes.menuButton} href="/draft" variant="contained" onClick={toggleDrawer}>
-                                                    <Typography>글쓰기</Typography>
+                                                <Button sx={{ borderRadius: 0, color: "#C5C5C5", border: "1px solid #C5C5C5" }} className={classes.menuButton} href="/draft" variant="outlined" onClick={toggleDrawer}>
+                                                    <Typography fontWeight="700" fontFamily="inter" sx={{ color: "secondary.light" }}>글 작성하기</Typography>
                                                 </Button>
-                                                <Button className={classes.menuButton} href="/archive" variant="contained" onClick={toggleDrawer}>
-                                                    <Typography>보관함 가기</Typography>
+                                                <Button sx={{ borderRadius: 0, color: "#C5C5C5", border: "1px solid #C5C5C5" }} className={classes.menuButton} href="/archive" variant="outlined" onClick={toggleDrawer}>
+                                                    <Typography fontWeight="700" fontFamily="inter" sx={{ color: "secondary.light" }}>보관함 가기</Typography>
                                                 </Button>
-                                                <Button className={classes.menuButton} href="/wastebasket" variant="contained" onClick={toggleDrawer}>
-                                                    <Typography>휴지통 가기</Typography>
+
+                                                <Button sx={{ borderRadius: 0 }} className={classes.menuButton} href="/wastebasket" variant="contained" onClick={toggleDrawer}>
+                                                    <Typography fontWeight="700" fontFamily="inter" sx={{ color: "secondary.light" }}>휴지통 가기</Typography>
+
                                                 </Button>
                                             </Stack>
                                         </React.Fragment>
                                     ) : (
                                         <React.Fragment>
-                                            <Stack direction="row" spacing="1rem" mt="2rem" mb="3.5rem">
-                                                <Button onClick={() => setOpenLoginForm(true)} variant="outlined"><Typography>로그인</Typography></Button>
-                                                <Button onClick={() => setOpenSignupForm(true)} variant="outlined"><Typography>회원가입</Typography></Button>
+                                            <Stack direction="row" spacing="1.2rem" mt="2rem" mb="4.5rem">
+                                                <Button href="/login" onClick={() => setOpenLoginForm(true)} variant="outlined" color="secondary" sx={{ color: "#C5C5C5", border: "1px solid #C5C5C5", borderRadius: "0", p: "0.5rem 0.75rem", '&:hover': { borderColor: "#C5C5C5" } }}>
+                                                    <Typography fontFamily="inter">로그인</Typography>
+                                                </Button>
+                                                <Button href="/signup" onClick={() => setOpenSignupForm(true)} variant="outlined" sx={{ color: "#F16600", border: "1px solid #F16600", borderRadius: "0", p: "0.5rem 0.75rem" }}>
+                                                    <Typography fontFamily="inter">회원가입</Typography>
+                                                </Button>
                                             </Stack>
-                                            <Typography color="primary.main" variant="h5" mb="6rem">글글글</Typography>
+                                            <img src={CopyWrite} style={{ paddingBottom: "8rem" }} />
                                             <Link color="primary.light">비밀번호 찾기</Link>
                                         </React.Fragment>
                                     )}
@@ -141,13 +157,13 @@ export default NavBar
 const useStyles = makeStyles(theme => ({
     "menuButton": {
         backgroundColor: theme.palette.primary.light,
-        width: "15rem"
+        width: "15rem",
     }
 }))
 
 const NavBox = styled(Box)({
-    zIndex: 9, 
-    display: "flex", 
+    zIndex: 9,
+    display: "flex",
     alignItems: "center",
     width: "100vw",
     maxWidth: "100%",

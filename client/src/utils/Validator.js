@@ -11,7 +11,7 @@ export const emailValidator = (email) => {
 export const passwordValidator = (password) => {
     const re =  /^(?=.*[a-zA-Z])(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[0-9]).{8,16}$/;
 
-    if (!re.test(password) || !password || password.length <= 0) {
+    if (!password || password.length <= 0) {
         return false;
     }
 

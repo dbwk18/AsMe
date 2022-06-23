@@ -14,7 +14,7 @@ function RecyleBin({ imageNum, title, number, creationTime }) {
     return (
         <Stack direction="row">
             <Stack justifyContent="flex-end" alignItems="flex-end">
-                <Typography pt="0.75rem" pr="0.5rem">{creationTime}</Typography>
+                <Typography pt="0.75rem" pr="0.5rem" color="#828282">{creationTime}</Typography>
                 <img src={images[imageNum]} />
             </Stack>
             <Stack>
