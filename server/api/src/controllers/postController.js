@@ -66,10 +66,10 @@ exports.deletePost = async (req, res) => {
 
         console.log(check);
         if (!check) {
-            res.status(200).json({ msg: false });
+            res.status(200).json({ message: "삭제에 실패하였습니다." });
         } else {
             await postService.deletePost(post_id);
-            res.status(200).json({ msg: true });
+            res.status(200).json({ message: "휴지통으로 이동되었습니다." });
             // return res.status(200).json({
             //     layout_type: check[0].layout_type,
             //     title: check[0].title,
