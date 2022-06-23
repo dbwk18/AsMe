@@ -10,8 +10,10 @@ exports.signin = async (req, res) => {
             return res.status(200).json({ message: "아이디, 비밀번호를 확인해주세요." });
         } else {
             let user = await signService.selectUser(id);
+            console.log(user[0]);
             res.status(200).json({
-                user_id: user[0].user_id
+                user_id: user[0].user_id,
+                name: user[0].name
             });
         }
     } catch (error) {
@@ -30,7 +32,8 @@ exports.signup = async (req, res) => {
             await signService.signup(id, password, name);
             let user = await signService.selectUser(id);
             res.status(200).json({
-                user_id: user[0].user_id
+                user_id: user[0].user_id,
+                name: user[0].name
             });
         } else {
             return res.status(200).json({ message: "이미 사용중인 아이디입니다." });
