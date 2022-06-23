@@ -2,6 +2,7 @@
 .wrapper-class {
     position: relative;
     bottom: 100px;
+    background-color: #ADADAD;
 }
 .editor {
     width: 1500px;
@@ -58,7 +59,7 @@
     height: 55px;
     padding: 0 0 0 20px;
     line-height: 55px;
-    font-size: 26px;
+    font-size: 20px;
     font-family: regular;
     color: #FFFFFF;
     background-color: #0D1F59;
@@ -153,16 +154,6 @@
 }
 
 
-.preview-tool {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgb(230, 230, 230);
-    width: 1200px;
-    height: 800px;
-    z-index: 100;
-}
 
 .close-btn {
     position: relative;
@@ -171,3 +162,13 @@
     top: 20px;
 }
 
+.black_bg {
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0,0,0,0.5);
+  }

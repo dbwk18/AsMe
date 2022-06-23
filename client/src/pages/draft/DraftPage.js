@@ -2,6 +2,7 @@ import {React, useState} from 'react';
 import { Grid, Box, Typography, Stack, Divider, List, ListItem, ListItemText, ListSubheader, Container } from '@mui/material';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
+import Preview from './Preview';
 import TrashIcon from '../../assets/images/trashcan.png'
 import TrashIconOn from '../../assets/images/trashcanOn.png'
 import CloseBtn from '../../assets/images/closeBtn.png'
@@ -10,7 +11,6 @@ import defaultImg from '../../assets/images/WhitePaper2.png'
 
 import './DraftPage.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import axios from 'axios';
 
 function DraftPage() {
 
@@ -76,9 +76,11 @@ function DraftPage() {
             {
                 toolBtn == "preview" 
                 ? (
-                    <div className='preview-tool'>
-                        <div className='close-btn' onClick={()=>{setToolBtn(null);}}>X</div>
-                    </div>
+                    <>
+                        <div className="black_bg"></div>
+                        <Preview setToolBtn={setToolBtn} />
+                    </>
+                    
                 )
                 : <></>
             }
