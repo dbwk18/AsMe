@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { loginUser, auth } from '../../services/actions/user_actions';
 import { Link } from 'react-router-dom';
 import { makeStyles, styled } from '@mui/styles';
-import { TextField, Container, Typography, Divider, Stack, Button } from '@mui/material';
+import { TextField, Typography, Stack, Button, Drawer } from '@mui/material';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import LoginBackground from '../../assets/images/LoginBackground.jpg';
 
 
 function LoginPage(props) {
-    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const classes = useStyles();
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
-    const [fail, setFail] = useState(false);
 
     const handleSubmit = () => {
         let dataToSubmit = {
@@ -19,84 +19,61 @@ function LoginPage(props) {
             password: password
         }
 
-        dispatch(loginUser(dataToSubmit))
+        axios.post(`/api/signin`, dataToSubmit)
+        .then(response => response.data)
         .then(response => {
-            if (response.type==='login_user' && response.payload!==undefined) {
+            if (response?.user_id) {
                 console.log(response);
-                window.localStorage.setItem('accessToken', response.payload.accessToken);
-                window.localStorage.setItem('refreshToken', response.payload.refreshToken);
-
-                dispatch(auth(response.payload.accessToken))
-                .then(response => {
-                    if (response.type==='auth_user' && response.payload!==undefined) {
-                        console.log(response);
-                        props.history.push("/");
-                    }
-                })
-                .catch(error => {
-                    console.log(error);
-                    alert("예기치 못한 오류가 발생하였습니다. 로그인을 다시 시도해주세요.");
-                })
-            }
-            else {
-                setFail(true);
+                window.localStorage.setItem("user_id", response.user_id);
+                window.localStorage.setItem("user_name", response.name);
+                navigate("/");
             }
         })
         .catch(err => {
             console.log(err);
-            setFail(true);
         })
     }
 
-    // TODO: (소셜 로그인)
     return (
         <div className={classes.container}>
-            <Container maxWidth="sm" sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <BlackLink to="/">
-                    <Typography 
-                        variant="h2"
-                        sx={{ 
-                            pb: 5, 
-                            letterSpacing: 8,                             
-                            fontFamily: ["Helvetica"],
-                        }} 
-                        align="center" 
-                        color="primary"
-                    >
-                        LOGO
-                    </Typography>
-                </BlackLink>
-                <TextField
-                    required
-                    id="id-input"
-                    label="아이디"
-                    autoComplete="current-id"
-                    fullWidth
-                    margin="normal"
-                    onChange={(e) => setId(e.target.value)}
-                />
-                <TextField
-                    required
-                    id="password-input"
-                    label="비밀번호"
-                    type="password"
-                    autoComplete="current-password"
-                    fullWidth
-                    margin="normal"
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <br />
-                { fail ? 
-                    <Typography variant="body2" alignSelf="flex-start" sx={{ color: "red", ml: 1 }}>
-                        *아이디/비밀번호가 일치하지 않습니다.
-                    </Typography>
-                :   <Typography>&nbsp;</Typography> 
-                }
-                <Button onClick={handleSubmit} fullWidth size="large" color="primary" variant="contained" sx={{ mt: 4, mb: 8, fontWeight: 700 }}>
-                    로그인
-                </Button>
-                <BlackLink to="/signup"><Typography>회원가입</Typography></BlackLink>
-            </Container>
+            <Drawer
+                sx={{ width: "28rem",
+                    flexShrink: 0,
+                    '& .MuiDrawer-paper': {
+                        width: "28rem",
+                        boxSizing: 'border-box',
+                        backgroundColor: "black"
+                    }
+                }}
+                anchor="right"
+                variant="permanent"
+            >
+                <Stack alignItems="center" spacing={2} pt="12rem">
+                    <TextField
+                        required
+                        id="id-input"
+                        placeholder="아이디"
+                        autoComplete="current-id"
+                        size="large"
+                        sx={{ width: "24rem", backgroundColor: "#fff" }}
+                        onChange={(e) => setId(e.target.value)}
+                    />
+                    <TextField
+                        required
+                        id="password-input"
+                        placeholder="비밀번호"
+                        type="password"
+                        autoComplete="current-password"
+                        size="large"
+                        sx={{ width: "24rem", backgroundColor: "#fff" }}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <Button onClick={handleSubmit} size="large" color="primary" variant="contained" sx={{ width: "24rem", py: 3, my: 2, fontWeight: 700, borderRadius: 0 }}>
+                        <Typography>로그인</Typography>
+                    </Button>
+                    <BlackLink to="/signup"><Typography>회원가입</Typography></BlackLink>
+                </Stack>
+            </Drawer>
         </div>
     )
 }
@@ -108,8 +85,10 @@ const useStyles = makeStyles({
     container: {
         height: "100vh",
         width: "100vw",
-        padding: "10rem 0",
-        margin: "auto"
+        margin: "auto",
+        backgroundImage: `url(${LoginBackground})`, 
+        marginLeft: "0rem",
+        marginTop: "-7rem",
     }
 })
 
