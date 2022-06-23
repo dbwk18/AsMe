@@ -101,8 +101,9 @@ const useStyles = makeStyles(theme => ({
     },
     "pencilImg": {
         backgroundImage: `url(${Pencil})`, 
-        width: "380px",
+        width: "350px",
         height: "48px",
+        transform :"scale(0.82)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
