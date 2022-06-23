@@ -20,7 +20,7 @@ exports.signup = async (id, password, name) => {
 
 exports.selectUser = async (id) => {
     try {
-        let user = await pool.query('select user_id from users where id=?', id);
+        let user = await pool.query('select user_id, name from users where id=?', id);
         return user[0];
     } catch (error) {
         throw Error(error);
