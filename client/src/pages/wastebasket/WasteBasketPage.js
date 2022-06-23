@@ -33,8 +33,8 @@ function WasteBasketPage() {
     ]);
 
     return (
-        <Box height="100vh" sx={{ py: "2rem", px: "10rem" }}>
-            <BorderBox height="100vh">
+        <Box height="100%" sx={{ pt: "2rem", px: "10rem" }}>
+            <BorderBox>
                 <TransparentLink href={`/wastebasket/1`}>
                     <Stack my="4rem" mx="30rem" alignItems="center">
                         <img src={PaperRoll} width="168px" height="163px" />
@@ -48,7 +48,7 @@ function WasteBasketPage() {
                     </Stack>
                 </TransparentLink>
                 <TransparentLink href={`/wastebasket/3`}>
-                    <Stack mt="-8rem" ml="45rem" alignItems="center">
+                    <Stack mt="-10rem" ml="45rem" alignItems="center">
                         <img src={PaperRoll} width="181px" height="176px" style={{ transform: "rotate(-30deg)" }} />
                         <Typography backgroundColor="secondary.main">{wastes[2].keyword}</Typography>
                     </Stack>
@@ -60,7 +60,7 @@ function WasteBasketPage() {
                     </Stack>
                 </TransparentLink>
                 <TransparentLink href={`/wastebasket/5`}>
-                    <Stack mt="-2rem" mr="32rem" alignItems="center">
+                    <Stack mt="-2rem" mr="40rem" alignItems="center">
                         <img src={PaperRoll} width="170px" height="166px" />
                         <Typography backgroundColor="primary.light">{wastes[4].keyword}</Typography>
                     </Stack>
@@ -71,7 +71,7 @@ function WasteBasketPage() {
                         <Typography backgroundColor="primary.light">{wastes[5].keyword}</Typography>
                     </Stack>
                 </TransparentLink>
-                <Stack sx={{ position: "fixed", bottom: "5rem", right: "3.75rem" }} spacing="0.5rem">
+                <Stack sx={{ position: "fixed", bottom: "3rem", right: "3.75rem" }} spacing="0.5rem">
                     <Typography fontSize="44px" textAlign="right">다시 꺼내 보세요.</Typography>
                     <Typography fontSize="24px" textAlign="right">그게 겁나 천만관객 영화 대본이 될지도..?</Typography>
                 </Stack>
@@ -84,7 +84,8 @@ export default WasteBasketPage
 
 const BorderBox = styled(Box)({
     border: "1px solid rgba(0,0,0,0.5)", 
-    width: "100%"
+    width: "100%",
+    height: "110vh",
 });
 
 const TransparentLink = styled("a")({
