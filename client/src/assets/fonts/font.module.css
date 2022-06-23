@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'KoPubDotumMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/KoPubDotumMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NotoSerifKR';
+    src: url('./Noto_Serif_KR/NotoSerifKR-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NotoSerifKR';
+    src: url('./Noto_Serif_KR/NotoSerifKR-SemiBold.otf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NotoSerifKR';
+    src: url('./Noto_Serif_KR/NotoSerifKR-Bold.otf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NotoSerifKR';
+    src: url('./Noto_Serif_KR/NotoSerifKR-Light.otf');
+    font-weight: 300;
+    font-style: normal;
+}

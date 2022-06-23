@@ -1,10 +1,11 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import "./font.module.css";
+import './assets/fonts/font.module.css';
 
 
 const theme = responsiveFontSizes(createTheme({
     typography: {
         fontFamily: [
+            "NotoSerifKR",
             "KoPubDotumMedium",
         ].join(','),
         h1: {
