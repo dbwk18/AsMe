@@ -1,34 +1,57 @@
+.archive-search {
+    position: relative;
+    font-family: regular;
+    font-size: 15px;
+    left: 750px;
+    width: 220px;
+    height: 33px;
+    line-height: 33px;
+    background-color: #EFEEE9;
+    text-align: center;
+    border: 1px solid #000000;
+}
+
 .navigate-tags {
     display: flex;
-    width: 1600px;
+    width: 1500px;
     position: relative;
-    top: 150px;
+    top: 70px;
     height: 200px; 
 }
 
-.navigate-tags button {
-    width: 90px;
-    height: 30px;
-    margin: 5px;
+.navigate-btn {
+    position: absolute;
+    top: 130px;
+    left: 120px;
 }
 
-.navigate-tags input {
-    width: 300px;
-    height: 30px;
-    margin-left: auto;
+.navigate-tags button {
+    width: auto;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 15px 0 0;
+    padding: 0 15px;
+    border: 1px solid #000000;
+    font-family: regular;
+    font-size: 16px;
+    background-color: #EFEEE9;
+}
+.navigate-tags button.on {
+    background-color: #0D1F59;
+    color: #FFFFFF;
 }
 
 .grid-container {
     position: relative;
     display: grid;
     top: 100px;
-    width: 1600px;
-    padding: 60px 0;
+    width: 1500px;
+    padding: 40px 20px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 300px);
     row-gap: 30px;
-    column-gap: 60px;
-    border: 1px solid #000000;
-    background-color: beige;
+    column-gap: 40px;
+    border: 1px dashed #000000;
+    background-color: #D9D9D9;
 }
 

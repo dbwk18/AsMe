@@ -1,39 +1,49 @@
 .article-box {
     height: 100%;
-    border: 2px solid slateblue;
-    background-color: #FFFFFF;
+    border: 1px dashed #ADADAD;
+    background-color: #E5E5E5;
+    font-family: regular;
 }
 
 .article-date {
     height: 40px;
     line-height: 40px;
-    padding: 5px;
-    border-bottom: 2px solid #000000;
+    margin: 10px;
+    padding: 0 10px;
+    color: #7B7B7B;
+    border-bottom: 2px solid #7B7B7B;
+    text-align: end;
+    font-size: 18px;
 }
 
 .article-grid {
     height: calc(100% - 40px);
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 6.3fr 3.7fr;
 }
 
 .article-main {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .article-title {
     height: 70px;
     line-height: 70px;
-    padding: 0 10px;
+    padding: 0 30px;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .article-content {
     height: 100%;
-    padding: 10px;
+    padding: 30px;
 }
 
 .article-img {
-    margin: 10px;
-    background-color:blueviolet;
+    margin: 10px 20px ;
+    height: 80%;
+
+    background-color: #0D1F59;
 }
