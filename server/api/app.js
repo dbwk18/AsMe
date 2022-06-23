@@ -3,14 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var session = require('express-session');
-var FileStore = require('session-file-store')(session);
+
 
 var signRouter = require('../api/src/routes/signRouter');
-var boardRouter = require('../api/src/routes/boardRouter');
 var postRouter = require('../api/src/routes/postRouter');
 var trashRouter = require('../api/src/routes/trashRouter');
-var trashBoardRouter = require('../api/src/routes/trashBoardRouter');
 
 
 var app = express();
@@ -27,19 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  store: new FileStore()
-}));
 
 
 app.use('/api', signRouter);
-app.use('/api', boardRouter);
 app.use('/api', postRouter);
 app.use('/api', trashRouter);
-app.use('/api', trashBoardRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

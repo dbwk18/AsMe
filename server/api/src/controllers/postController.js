@@ -1,33 +1,30 @@
 const axios = require('axios');
 const postService = require('../services/postService');
 
-exports.selectPost = async (req, res) => {
-    let { post_id } = req.params;
+exports.selectAllPost = async (req, res) => {
+    let { user_id } = req.body;
     try {
-        let post = await postService.selectPost(post_id);
+        let posts = await postService.selectAllPost(user_id);
         res.status(200).json({
-            layout_type: post[0].layout_type,
-            title: post[0].title,
-            content: post[0].content,
-            creation_time: post[0].creation_time,
-            image: post[0].image
+            posts: posts
         });
     } catch (error) {
+        console.log(error);
         return res.status(500).json(error);
     }
 }
 
 exports.insertPost = async (req, res) => {
-    let { title, content, image, layout_type, user_id } = req.body;
+    let { title, content, layout_type, user_id } = req.body;
     try {
-        let val = await postService.insertPost([title, content, image, layout_type, user_id]);
+        let val = await postService.insertPost([title, content, layout_type, user_id]);
         let post = await postService.selectPost([val.insertId]);
         return res.status(200).json({
             layout_type: post[0].layout_type,
             title: post[0].title,
             content: post[0].content,
             creation_time: post[0].creation_time,
-            image: post[0].image
+            user_id: post[0].user_id
         });
     } catch (error) {
         console.log(error);
@@ -46,58 +43,30 @@ exports.deletePost = async (req, res) => {
         let layout_type = post[0].layout_type;
         let user_id = post[0].user_id;
 
-        let check = await postService.insertTrash([post_id, title, content, creation_time, image, layout_type, user_id]);
+        await postService.insertTrash([post_id, title, content, creation_time, image, layout_type, user_id]);
 
-        //clusturing
-        let trashes = await postService.getTrashes(user_id);
+        //trash list post
+        let articles = await postService.getArticles(user_id);
 
-        const postTrashes = await axios.post("http://localhost:8080/api/topic", {
-            data: trashes
+
+        const postTrashes = await axios.post("http://localhost:5000/api/topic", {
+            articles: articles
         });
 
-        console.log(postTrashes.data);
-        const response = await axios.get("http://localhost:8080/api/topic");
+        console.log("post result : " + postTrashes.data);
 
-        console.log(response.data);
-        let = response.data;
+        //cluster list get
+        const response = await axios.get("http://localhost:5000/api/topic");
+
+        console.log("get result : " + response);
+
+        let clusters = response.documents;
         for (let i = 0; i < documents.length; i++) {
-            await postService.clustering(documents[i]);
+            await postService.clustering(clusters[i]);
         }
-
-        console.log(check);
-        if (!check) {
-            res.status(200).json({ message: "삭제에 실패하였습니다." });
-        } else {
-            await postService.deletePost(post_id);
-            res.status(200).json({ message: "휴지통으로 이동되었습니다." });
-            // return res.status(200).json({
-            //     layout_type: check[0].layout_type,
-            //     title: check[0].title,
-            //     content: check[0].content,
-            //     creation_time: check[0].creation_time,
-            //     image: check[0].image
-            // });
-        }
+        await postService.deletePost(post_id);
+        res.status(200).json({ message: "휴지통으로 이동되었습니다." });
     } catch (error) {
         return res.status(500).json(error);
     }
 }
-
-
-
-
-// exports.updatePost = async (req, res) => {
-//     let post_uid = req.params;
-//     let data = [req.body.post_title, req.body.post_content, req.body.post_writer, post_uid];
-//     try {
-//         await postService.updatePost(data);
-//         let post = await postService.selectPost(post_uid);
-//         return res.status(200).json({
-//             post: post[0]
-//         });
-//     } catch (error) {
-//         return res.status(500).json(error);
-//     }
-// }
-
-
