@@ -68,7 +68,7 @@ function NavBar() {
                     </Box>
                 </Link>
                 {isLogoCircle &&
-                    <Typography color="#A09E99" sx={{ width: "12rem" }}>글쓰기 완성 도움 플랫폼</Typography>
+                    <Typography color="#A09E99" fontSize="0.75rem" sx={{ width: "12rem" }}>글쓰기 완성 도움 플랫폼</Typography>
                 }
             </Stack>
 
