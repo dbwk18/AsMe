@@ -37,7 +37,7 @@ function MainPage() {
                     </Stack>
                 </Box>
             </Box>
-            <Box sx={{ pt: "9rem", pr: "3rem" }} display="flex" justifyContent="flex-end">
+            <Box sx={{ pt: "8rem", pr: "3rem" }} display="flex" justifyContent="flex-end">
                 <Stack>
                     <Typography letterSpacing={10} fontSize="24px" color="#BBBBBB" ml="7rem">{openCase ? "　" : "케이스를 당겨주세요."}</Typography>
                     <Stack direction="row" spacing={"1rem"} mt="2rem" onClick={() => setOpenCase(!openCase)}>
@@ -101,9 +101,8 @@ const useStyles = makeStyles(theme => ({
     },
     "pencilImg": {
         backgroundImage: `url(${Pencil})`, 
-        width: "400px",
+        width: "380px",
         height: "48px",
-        transform: "scale(0.7)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
