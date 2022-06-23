@@ -2,6 +2,8 @@ import {React, useState} from 'react';
 import { Grid, Box, Typography, Stack, Divider, List, ListItem, ListItemText, ListSubheader, Container } from '@mui/material';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
+import SearchIcon from '../../assets/images/search.png'
+
 import './DraftPage.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
@@ -9,9 +11,10 @@ function DraftPage() {
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
-    const [previewTool, setPreviewTool] = useState(false);
-    const [searchTool, setSearchTool] = useState(false);
-    const [writingTool, setWritingTool] = useState(false);
+    const [toolBtn, setToolBtn] = useState(null);
+    // const [previewTool, setPreviewTool] = useState(false);
+    // const [searchTool, setSearchTool] = useState(false);
+    // const [writingTool, setWritingTool] = useState(false);
 
     const onEditorStateChange = (editorState) => {
         setEditorState(editorState);
@@ -24,9 +27,9 @@ function DraftPage() {
         <Stack height="100vh" alignItems="center" justifyContent="center" >
             <div className="draft-wrapper" position="absolute">
                 <div className="navigate-button">
-                    <button className="draftBtn"onClick={()=>{setPreviewTool(true);}}>미리보기</button>
-                    <button className="draftBtn" onClick={()=>{setWritingTool(true);}}>글감추천</button>
-                    <button className="draftBtn" onClick={()=>{setSearchTool(true);}}>검색창</button>
+                    <button className={`draftBtn ${toolBtn == "preview" ? "previewOn" : ""}`} onClick={()=>{setToolBtn("preview");}}>미리<br/>보기</button>
+                    <button className={`draftBtn ${toolBtn == "writing" ? "writeOn" : ""}`} onClick={()=>{setToolBtn("writing");}}>글감</button>
+                    <button className={`draftBtn ${toolBtn == "search" ? "searchOn" : ""}`} onClick={()=>{setToolBtn("search");}}><img width="25px" src={SearchIcon}></img></button>
                 </div>
                 <Editor
                     // class for editor & toolbar
@@ -51,32 +54,33 @@ function DraftPage() {
                 />
             </div>
             {
-                previewTool 
+                toolBtn == "preview" 
                 ? (
                     <div className='preview-tool'>
-                        <div className='close-btn' onClick={()=>{setPreviewTool(false);}}>X</div>
+                        <div className='close-btn' onClick={()=>{setToolBtn(null);}}>X</div>
                     </div>
                 )
                 : <></>
             }
             {
-                searchTool 
+                toolBtn == "search" 
                 ? (
                     <div className='popup-tool'>
-                        <div className='close-btn' onClick={()=>{setSearchTool(false);}}>X</div>
+                        <div className='close-btn' onClick={()=>{setToolBtn(null);}}>X</div>
                     </div>
                 )
                 : <></>
             }
             {
-                writingTool 
+                toolBtn == "writing"  
                 ? (
                     <div className='popup-tool'>
-                        <div className='close-btn' onClick={()=>{setWritingTool(false);}}>X</div>
+                        <div className='close-btn' onClick={()=>{setToolBtn(null);}}>X</div>
                     </div>
                 )
                 : <></>
             }
+            
         </Stack>
     )
 }

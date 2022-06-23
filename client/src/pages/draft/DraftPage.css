@@ -1,7 +1,7 @@
 
 .wrapper-class {
     position: relative;
-    top: 100px;
+    bottom: 100px;
 }
 .editor {
     width: 1500px;
@@ -9,20 +9,44 @@
     border: 1px solid #f1f1f1 !important;
     padding: 5px !important;
     border-radius: 2px !important;
+    background-color: #FFFFFF;
+    padding: 0 50px !important;
+    font-size: 50px;
   }
 
 
+
 .navigate-button {
+    display: flex;
     position: relative;
-    top: 50px;
-    width: 340px;
+    left: 150px;
+    bottom: 140px;
+    width: 270px;
+    height: 100px;
+    line-height: 100px;
     margin-left: auto;
 }
 
 .draftBtn {
-    width: 100px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     margin: 5px;
+    font-family: regular;
+}
+
+.draftBtn.previewOn {
+    background-color: #0D1F59;
+    color: #FFFFFF;
+}
+
+.draftBtn.writeOn {
+    background-color: #0D1F59;
+    color: #FFFFFF;
+}
+
+.draftBtn.searchOn {
+    background-color: #0D1F59;
+    color: #FFFFFF;
 }
 
 .popup-tool {
@@ -30,8 +54,8 @@
     top: 70%;
     left: 90%;
     transform: translate(-50%, -50%);
-    background-color: pink;
-    width: 400px;
+    background-color: #0D1F59;
+    width: 700px;
     height: 100vh;
 }
 
