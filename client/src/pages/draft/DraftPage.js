@@ -25,7 +25,7 @@ function DraftPage() {
 
     function get_image(msg) {
         console.log(msg)
-        const response =fetch(`http://0.0.0.0:8080/img/${msg}}`, {
+        const response = fetch(`http://0.0.0.0:8080/img/${msg}}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ function DraftPage() {
                 text_qury: msg
             }
         }).then(res => {
-            console.log(res.data);
+            console.log(res.json());
         }).catch(error => {
             console.log(error)
         })
