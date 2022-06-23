@@ -7,7 +7,7 @@ exports.signin = async (req, res) => {
         let user = await signService.signin(id, password);
 
         if (!user[0]) {
-            return res.send(`<script type="text/javascript">alert("아이디 비밀번호를 확인해주세요.");</script>`);
+            return res.status(200).json({ message: "아이디, 비밀번호를 확인해주세요." });
         } else {
             let user = await signService.selectUser(id);
             res.status(200).json({
@@ -33,9 +33,7 @@ exports.signup = async (req, res) => {
                 user_id: user[0].user_id
             });
         } else {
-            return res.send(`<script type="text/javascript">
-                alert("이미 사용중인 아이디 입니다."); 
-                </script>`);
+            return res.status(200).json({ message: "이미 사용중인 아이디입니다." });
         }
     } catch (error) {
         return res.status(500).json(error);
