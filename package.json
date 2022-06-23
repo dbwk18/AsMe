@@ -1,13 +1,26 @@
 {
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./server/api/bin/www",
+    "back": "nodemon ./server/api/bin/www",
+    "front": "cd client && yarn start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently --kill-others-on-fail \"npm run front\" \"npm run back\""
+  },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^34.1.0",
     "@ckeditor/ckeditor5-react": "^5.0.2",
     "@mui/icons-material": "^5.8.4",
     "axios": "^0.27.2",
+    "concurrently": "^7.2.2",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "deepai": "^1.0.21",
     "draft-js": "^0.11.7",
     "express": "^4.18.1",
-    "react-draft-wysiwyg": "^1.14.7"
+    "morgan": "^1.10.0",
+    "react-draft-wysiwyg": "^1.14.7",
+    "yarn": "^1.22.19",
+    "nodemon": "^2.0.18"
   }
 }
