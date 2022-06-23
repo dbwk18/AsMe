@@ -3,10 +3,12 @@ import requests
 
 # # 플라스크 웹 서버 객체 생성
 app = Flask(__name__) 
-font_path = 'NanumGothic.ttf'
 
-@app.route('/dalle', methods=['GET'])
+@app.route('/dalle', methods=['GET', 'POST'])
 def dalle_2():
+    lists = request.args['file_name']
+    lists = lists.split(',')
+    data = []
     r = requests.post(
         "https://api.deepai.org/api/text2img",
         data={
@@ -17,4 +19,4 @@ def dalle_2():
     return r.json()
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, threaded=True)   # 0.0.0.0 : localhost
+    app.run('0.0.0.0', port=8080, threaded=True)   # 0.0.0.0 : localhost
