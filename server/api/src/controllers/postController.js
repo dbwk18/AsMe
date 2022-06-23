@@ -1,3 +1,4 @@
+const axios = require('axios');
 const postService = require('../services/postService');
 
 exports.selectPost = async (req, res) => {
@@ -46,12 +47,29 @@ exports.deletePost = async (req, res) => {
         let user_id = post[0].user_id;
 
         let check = await postService.insertTrash([post_id, title, content, creation_time, image, layout_type, user_id]);
+
+        //clusturing
+        let trashes = await postService.getTrashes(user_id);
+
+        const postTrashes = await axios.post("http://localhost:8080/api/topic", {
+            data: trashes
+        });
+
+        console.log(postTrashes.data);
+        const response = await axios.get("http://localhost:8080/api/topic");
+
+        console.log(response.data);
+        let = response.data;
+        for (let i = 0; i < documents.length; i++) {
+            await postService.clustering(documents[i]);
+        }
+
         console.log(check);
         if (!check) {
-            res.send('<script type="text/javascript">alert("삭제 실패..");</script>');
+            res.status(200).json({ message: "삭제에 실패하였습니다." });
         } else {
             await postService.deletePost(post_id);
-            res.send('<script type="text/javascript">alert("휴지통으로 전송되었습니다..");</script>');
+            res.status(200).json({ message: "휴지통으로 이동되었습니다." });
             // return res.status(200).json({
             //     layout_type: check[0].layout_type,
             //     title: check[0].title,
