@@ -6,7 +6,6 @@ var logger = require('morgan');
 
 
 var signRouter = require('../api/src/routes/signRouter');
-var boardRouter = require('../api/src/routes/boardRouter');
 var postRouter = require('../api/src/routes/postRouter');
 var trashRouter = require('../api/src/routes/trashRouter');
 
@@ -28,7 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/api', signRouter);
-app.use('/api', boardRouter);
 app.use('/api', postRouter);
 app.use('/api', trashRouter);
 
