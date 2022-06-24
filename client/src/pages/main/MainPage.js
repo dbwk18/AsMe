@@ -80,7 +80,7 @@ function MainPage() {
             </Box>
             <Box sx={{ overflowX: "hidden" }}>
                 <Stack width="104%" pt="7.5rem" direction="row" justifyContent="space-between" alignItems="flex-end" sx={{ overflowX: "hidden" }}>
-                    <RecyleBin imageNum={0} width={"230px"} height={"235px"} title={articles[0]?.title} number={1} creationTime={articles[0]?.creation_time}></RecyleBin>
+                    <RecyleBin imageNum={0} width={"230px"} height={"235px"} title={articles[0]?.title} number={1} creationTime={articles[0]?.creation_time} />
                     <RecyleBin imageNum={3} width={"220px"} height={"334px"} title={articles[1]?.title} number={2} creationTime={articles[1]?.creation_time} />
                     <RecyleBin imageNum={4} width={"255px"} height={"274px"} title={articles[2]?.title} number={3} creationTime={articles[2]?.creation_time} />
                     <RecyleBin imageNum={1} width={"220px"} height={"298px"} title={articles[3]?.title} number={4} creationTime={articles[3]?.creation_time} />

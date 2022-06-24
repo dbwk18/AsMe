@@ -155,7 +155,7 @@ export default function RegisterPage() {
                     />
                     <img src={Terms} width="340px" style={{ marginBottom: "2rem" }} />
                     <Button onClick={handleSubmit} color="primary" variant="contained" size="large" sx={{ width: "22rem", py: 3, fontWeight: 700, borderRadius: 0 }}>
-                        <Typography color="#fff" fontWeight="700">가입 완료</Typography>
+                        <Typography color="#fff" fontWeight="700" fontFamily="inter">가입 완료</Typography>
                     </Button>
                 </Stack>
             </Drawer>
