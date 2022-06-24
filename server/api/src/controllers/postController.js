@@ -16,9 +16,9 @@ exports.selectAllPost = async (req, res) => {
 }
 
 exports.insertPost = async (req, res) => {
-    let { title, content, layout_type, user_id } = req.body;
+    let { title, content, creation_time, layout_type, user_id } = req.body;
     try {
-        let val = await postService.insertPost([title, content, layout_type, user_id]);
+        let val = await postService.insertPost([title, content, creation_time, layout_type, user_id]);
         let post = await postService.selectPost([val.insertId]);
         return res.status(200).json({
             layout_type: post[0].layout_type,
@@ -40,11 +40,10 @@ exports.deletePost = async (req, res) => {
         let title = post[0].title;
         let content = post[0].content;
         let creation_time = post[0].creation_time;
-        let image = post[0].image;
         let layout_type = post[0].layout_type;
         let user_id = post[0].user_id;
 
-        await postService.insertTrash([post_id, title, content, creation_time, image, layout_type, user_id]);
+        await postService.insertTrash([post_id, title, content, creation_time, layout_type, user_id]);
 
         //trash list post
         let articles = await postService.getArticles(user_id);
