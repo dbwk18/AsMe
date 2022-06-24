@@ -1,8 +1,9 @@
-import {React, useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Stack, Grid, Container } from '@mui/material';
 import ArticleBox from './ArticleBox';
 import BackBtn from '../../assets/images/backBtn.png'
+import axios from 'axios';
 
 import './ArchivePage.css'
 
@@ -10,18 +11,23 @@ import './ArchivePage.css'
 function ArchivePage() {
 
     const [category, setCategory] = useState(1);
+    const [articles, setArticles] = useState([]);
 
-    const response = fetch(`http://localhost:3003/api/posts`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(response => response.json());
-
-    console.log(response)
-
-
+    useEffect(() => {
+        let dataToSubmit = {
+            "user_id": window.localStorage.getItem("user_id")
+        }
     
+        axios.get(`/api/posts`, dataToSubmit)
+        .then(response => response.data)
+        .then(response => {
+            console.log(response);
+            
+        })
+        .catch(err => console.log(err));
+    }, []);
+
+
     return (
         <Stack height="100vh" alignItems="center" justifyContent="center" >
             <div><input className="archive-search" placeholder='글감을 검색하세요' /></div>
