@@ -1,4 +1,5 @@
-import {React, useState} from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
 import CloseBtn from '../../assets/images/closeBtnBlack.png'
 import CheckIcon from '../../assets/images/checkIcon.png'
 
@@ -6,22 +7,38 @@ import CheckIcon from '../../assets/images/checkIcon.png'
 import './Preview.css'
 
 
-function Preview ( {setToolBtn} ) {
+function Preview ( {setToolBtn, content, title, date} ) {
 
-    const [layout, setLayout] = useState('black');
+    const [layout, setLayout] = useState(1);
+
+    const uploadDraft = () => {
+        let dataToSubmit = {
+            "title": title,
+            "content": content,
+            "layout_type": layout,
+            "user_id": window.localStorage.getItem("user_id")
+        }
+
+        axios.post(`/api/post`, dataToSubmit)
+            .then(response => response.data)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(err => console.log(err));
+    }
 
     return(
         <div className='preview-modal'>
             <div className='preview-select'>
                 <div className='preview-layout'>
-                    <div onClick={()=>{setLayout('black');}} style={{backgroundColor: "#000000"}}>
-                        <img width="40px" src={layout == 'black' ? CheckIcon : ""}/>
+                    <div onClick={()=>{setLayout(1);}} style={{backgroundColor: "#000000"}}>
+                        <img width="40px" src={layout == 1 ? CheckIcon : ""}/>
                     </div>
-                    <div onClick={()=>{setLayout('orange');}} style={{backgroundColor: "#F16601"}}>
-                        <img width="40px" src={layout == 'orange' ? CheckIcon : ""}/>
+                    <div onClick={()=>{setLayout(2);}} style={{backgroundColor: "#F16601"}}>
+                        <img width="40px" src={layout == 2 ? CheckIcon : ""}/>
                     </div>
-                    <div onClick={()=>{setLayout('blue');}} style={{backgroundColor: "#0D1F59"}}>
-                        <img width="40px" src={layout == 'blue' ? CheckIcon : ""}/>
+                    <div onClick={()=>{setLayout(3);}} style={{backgroundColor: "#0D1F59"}}>
+                        <img width="40px" src={layout == 3 ? CheckIcon : ""}/>
                     </div>
                 </div>
                 <div className='preview-close' onClick={()=>{setToolBtn(null);}}>
@@ -29,12 +46,12 @@ function Preview ( {setToolBtn} ) {
                 </div>
             </div>
             <div className={`preview-header ${layout}`}>
-                <div className='title'>나는 어디서 힘을 얻을까?</div>
-                <div className='subtitle'>나는 어디서 힘을 얻을까는 뭘까</div>
-                <div className='date'>2022-06-22</div>
+                <div className='title'>{title}</div>
+                {/* <div className='subtitle'>나는 어디서 힘을 얻을까는 뭘까</div> */}
+                <div className='date'>{date}</div>
             </div>
             <div className={`preview-body ${layout}`}> 
-                <div>
+                {/* <div>
                 친구는 세월의 도둑이다.봄부터 흐르는 물은 겨울이 되어도 얼지 않듯이마음에서 우러나오는 우적은 역경이 닥친다고 해서 식지 않는다.
                 행했을 때 만난 친구는 가장 소중히 여겨야 한다.행복했을 때 함께 기쁨을 누리는 친구보다 힘들 떄 슬픔을 덜어지는 친구를 더 많이 
                 신뢰할 수 있다. 부유했을 때는 친구를 사귀기 쉽지만, 어려울 때는 눈을 씻고 찾아봐도 친구를 찾기 어렵다. 누군가 진정한 우정을 
@@ -52,13 +69,16 @@ function Preview ( {setToolBtn} ) {
                  참된 우정은 건강과 같아서 그것을 잃어버려야만 그 가치가 드러난다. 사랑에는 신뢰가 우정에는 이해가 필요하다. 사랑은 두마음이 
                  한 몸이 되는 것이고, 우정은 두 몸이 한 몸이 되는 것이다. 우정은 신들의 선물이며 사람에게 소중한 행운이다. 여자가 개입되면 
                  우정이 끝나는 것은 시간문제다. 여자의 우정은 언제나 사랑으로 끝난다. 아름다운 우정은 날개 없는 사랑의 신이다. 
+                </div> */}
+                <div>
+                    {content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ')}
                 </div>
             </div>
             <div className={`preview-footer ${layout}`}>
                 <div className='tag'>백과사전</div>
                 <div className='tag'>소항목주의</div>
                 <div className='tag'>기술</div>
-                <button>저장</button>
+                <button onClick={uploadDraft}>저장</button>
             </div>
         </div>
     )

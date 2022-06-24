@@ -2,29 +2,35 @@ import {React, useState} from 'react';
 import { Grid, Box, Typography, Stack, Divider, List, ListItem, ListItemText, ListSubheader, Container } from '@mui/material';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
+import {stateToHTML} from 'draft-js-export-html';
 import Preview from './Preview';
 import TrashIcon from '../../assets/images/trashcan.png'
 import TrashIconOn from '../../assets/images/trashcanOn.png'
 import CloseBtn from '../../assets/images/closeBtn.png'
 import ProfileImg from '../../assets/images/profileImg.png'
 import defaultImg from '../../assets/images/WhitePaper2.png'
+import { dateToString } from '../../utils/Format';
 
 import './DraftPage.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 function DraftPage() {
 
+    const today = dateToString(new Date());
+
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
+    const [content, setContent] = useState("");
+    const [title, setTitle] = useState("나는 어디서 힘을 얻을까?");
 
     const [toolBtn, setToolBtn] = useState(null);
-    const [textQuery, setTextQuery] = useState('flying dog')
+    const [textQuery, setTextQuery] = useState('flying dog');
 
     const onEditorStateChange = (editorState) => {
         setEditorState(editorState);
+        setContent(stateToHTML(editorState.getCurrentContent()));
     };
 
-    console.log(editorState)
-   
+    // console.log(editorState)
 
     function get_image(msg) {
         console.log(msg)
@@ -78,7 +84,7 @@ function DraftPage() {
                 ? (
                     <>
                         <div className="black_bg"></div>
-                        <Preview setToolBtn={setToolBtn} />
+                        <Preview setToolBtn={setToolBtn} content={content} title={title} date={today} />
                     </>
                     
                 )
