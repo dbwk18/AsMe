@@ -22,7 +22,7 @@ exports.selectPost = async (req) => {
 exports.insertPost = async (req) => {
     try {
         console.log(req);
-        let post = await pool.query('insert into posts (title, content, creation_time, layout_type, user_id) values (?, ?, NOW(), ?, ?)', req);
+        let post = await pool.query('insert into posts (title, content, creation_time, layout_type, user_id) values (?, ?, ?, ?, ?)', req);
         return post[0];
     } catch (error) {
         return Error(error);
