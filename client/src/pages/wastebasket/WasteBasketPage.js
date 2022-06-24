@@ -72,7 +72,7 @@ function WasteBasketPage() {
     }, [topicId]);
 
     return (
-        <Box height="100%" sx={{ pt: "6rem", px: "10rem" }}>
+        <Box height="100%" sx={{ pt: "4rem", px: "10rem" }}>
             <Typography sx={{ position: "fixed", left: "-3rem", top: "32rem", transform: "rotate(-90deg)" }} fontSize="12px" color="#ADADAD">Writing Assistant, 'AsMe'</Typography>
             <BorderBox>
                 {topicId ? (
@@ -97,13 +97,13 @@ function WasteBasketPage() {
                             </Stack>
                         </TransparentLink>
                         <TransparentLink onClick={() => setTopicId(clusters[1]?.cluster_id)}>
-                            <Stack mt="-5rem" mr="32rem" alignItems="center">
+                            <Stack mt="-8rem" mr="40rem" alignItems="center">
                                 <img src={PaperRoll} style={{ transform: "rotate(30deg)" }} />
                                 <Typography color="black" backgroundColor="#F166004D">{clusters[1]?.keyword}</Typography>
                             </Stack>
                         </TransparentLink>
                         <TransparentLink onClick={() => setTopicId(clusters[2]?.cluster_id)}>
-                            <Stack mt="-10rem" ml="60rem" alignItems="center">
+                            <Stack mt="-10rem" ml="50rem" alignItems="center">
                                 <img src={PaperRoll} width="200px" height="196px" style={{ transform: "rotate(-30deg)" }} />
                                 <Typography color="black" backgroundColor=" #F1660033">{clusters[2]?.keyword}</Typography>
                             </Stack>

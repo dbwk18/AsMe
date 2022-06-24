@@ -1,5 +1,5 @@
 import {React, useState} from 'react';
-import { Grid, Box, Typography, Stack, Divider, List, ListItem, ListItemText, ListSubheader, Container } from '@mui/material';
+import { Grid, Box, Typography, Stack, TextField } from '@mui/material';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
 import {stateToHTML} from 'draft-js-export-html';
@@ -20,7 +20,7 @@ function DraftPage() {
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [content, setContent] = useState("");
-    const [title, setTitle] = useState("나는 어디서 힘을 얻을까?");
+    const [title, setTitle] = useState("");
 
     const [toolBtn, setToolBtn] = useState(null);
     const [textQuery, setTextQuery] = useState('flying dog');
@@ -51,7 +51,13 @@ function DraftPage() {
     
     return (
         <Stack height="100vh" alignItems="center" justifyContent="center" >
-            <div className="draft-wrapper" position="absolute">
+            <div className="draft-wrapper" position="absolute" style={{ transform: "scale(0.75)"}}>
+                <TextField 
+                    placeholder="제목을 입력해주세요."
+                    value={title}
+                    onChange={(event) => setTitle(event.target.value)}
+                    sx={{ marginBottom: "2rem", width: "40rem", backgroundColor: "#fff" }}
+                />
                 <div className="navigate-button">
                     <button className={`draftBtn ${toolBtn == "preview" ? "previewOn" : ""}`} onClick={()=>{setToolBtn("preview");}}>미리<br/>보기</button>
                     <button className={`draftBtn ${toolBtn == "writing" ? "writeOn" : ""}`} onClick={()=>{setToolBtn("writing");}}>글감<br/>보기</button>

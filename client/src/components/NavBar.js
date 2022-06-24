@@ -93,7 +93,7 @@ function NavBar() {
                                   width: "28rem",
                                   boxSizing: 'border-box',
                                   backgroundColor: "black"
-                                }
+                                },
                             }}
                             anchor="right"
                             open={openDrawer}

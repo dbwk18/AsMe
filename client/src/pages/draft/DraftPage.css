@@ -24,6 +24,7 @@
     height: 100px;
     line-height: 100px;
     margin-left: auto;
+    margin-right: -40px;
 }
 
 .draftBtn {
@@ -70,14 +71,15 @@
 
 .popup-tool {
     position: absolute;
-    top: 560px;
-    left: 85%;
+    top: 110px;
+    left: 71%;
     transform: translate(-50%, -50%);
     background-color: #0D1F59;
-    width: 550px;
-    height: 800px;
+    width: 490px;
+    height: 752px;
     z-index: 100;
     overflow-y: auto;
+    transform: scale(0.75)
 }
 
 .popup-header {
