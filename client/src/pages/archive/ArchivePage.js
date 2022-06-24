@@ -29,7 +29,7 @@ function ArchivePage() {
 
 
     return (
-        <Stack height="100vh" alignItems="center" justifyContent="center" >
+        <Stack height="100vh" alignItems="center" justifyContent="center" sx={{ transform: "scale(0.75)" }}>
             <div><input className="archive-search" placeholder='글감을 검색하세요' /></div>
             <div className='navigate-btn'><Link to="/"><img width="50px" src={BackBtn} /></Link></div>
             <div className="navigate-tags">
